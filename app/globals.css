@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --ring: 217.2 32.6% 17.5%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Profile menu styles */
+.profile-menu {
+  @apply absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10;
+}
+
+.profile-menu-item {
+  @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100;
+}
+.book-shape {
+  box-shadow:
+    -6px 6px 0 -1px rgba(0,0,0,0.1),
+    -6px 6px 0 0 rgba(0,0,0,0.2);
+  transform: perspective(100px) rotateY(2deg);
+}
+
+.segment {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+  margin: 0 1px;
+}
+
+.segment:hover {
+  background-color: #e0e0e0;
+}
+
+.dark .segment {
+  background-color: #2d2d2d;
+}
+
+.dark .segment:hover {
+  background-color: #3d3d3d;
+}
+
+/* Add these styles to the end of your CSS file */
+
+/* Update the book-content scrolling styles */
+#book-content {
+  position: relative; /* Ensure proper positioning context */
+  -webkit-overflow-scrolling: auto; /* Changed from touch to auto */
+  scroll-behavior: auto; /* Changed from smooth to auto */
+  overscroll-behavior: none; /* Changed from contain to none */
+  /* Removed will-change, transform and backface-visibility properties */
+  margin: var(--content-margin) !important;
+  padding: var(--content-padding) !important;
+}
+
+/* Update popover styles */
+.radix-popover-content {
+  position: relative !important;
+  margin: 0 !important;
+  max-height: 80vh !important; /* Prevent popover from being too tall */
+  overflow-y: auto !important;
+}
+
+/* Add styles for the popover container */
+.popover-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Allow clicks to pass through to content */
+  z-index: 50;
+}
+
+.popover-container > * {
+  pointer-events: auto; /* Re-enable pointer events for the popover */
+}
+
+#book-content::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+#book-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#book-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.dark #book-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#book-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.dark #book-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Add styles for centered popover */
+.radix-popover-content {
+  position: absolute !important;
+  margin: 0 !important;
+  transform-origin: center !important;
+}
+
+/* Update popover styles */
+.word-popover-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.word-popover-content {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 320px;
+  width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 51;
+  transform: none !important;
+}
+
+/* Add these styles to prevent unwanted mobile selection behavior */
+@media (max-width: 768px) {
+  .prevent-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .allow-select {
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  .word-popover-content {
+    width: 95vw; /* Slightly wider on very small screens */
+    margin: 10px;
+    max-height: 70vh; /* Slightly shorter on mobile to ensure visibility of content */
+  }
+  
+  /* Better touch handling for the overlay */
+  .word-popover-overlay {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Add these styles to override prose margins */
+.prose {
+  margin: unset !important; /* Remove this or modify */
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+.prose > * {
+  margin: 0 !important;
+}
+
+.prose p {
+  margin-bottom: 1rem !important;
+}
+
+#book-content .prose > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Reset container margins */
+#book-content > div {
+  margin: unset !important; /* Remove this or modify */
+}
